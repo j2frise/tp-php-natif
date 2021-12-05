@@ -1,7 +1,8 @@
 <?php
+
 session_start();
 
-require 'vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 $router = new Router();
 $router->getController();
@@ -18,7 +19,7 @@ class Router
 
     foreach($routes as $route){
       if ($path === $route->getAttribute('p')){
-        $controllerClass = 'Controller\\' . $route->getAttribute('controller') . '.php';
+        $controllerClass = 'App\\Controller\\' . $route->getAttribute('controller');
         $action = $route->getAttribute('action');
         $params = [];
         if ($route->hasAttribute('params')){
@@ -30,7 +31,7 @@ class Router
         return new $controllerClass($action,$params);
       }
     }
-    // return new ErrorController('noRoute');
+    return new ErrorController('noRoute');
   }
 };
 ?>
