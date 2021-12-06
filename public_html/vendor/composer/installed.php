@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'db7e57bf5133282c980a5784e55944d8850d50ba',
         'name' => 'jboukoro/blog-php-mvc',
         'dev' => true,
     ),
     'versions' => array(
         'jboukoro/blog-php-mvc' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'db7e57bf5133282c980a5784e55944d8850d50ba',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(

@@ -1,6 +1,8 @@
 $(".form-button").click(function(){
     const $require = $(".require");
-    const $form = $('#common-form');
+	const rel = $(this).attr("rel");
+    const $form = $('#common-form-'+rel);
+	const $message = (".message-"+rel);
 
     var nbError = 0;
     $require.each(function(){
@@ -14,7 +16,7 @@ $(".form-button").click(function(){
 	});
 
     if(nbError == 0){
-        $(".message").removeClass("alert alert-danger").html('');
+        $message.removeClass("alert alert-danger").html('');
 		var formData = new FormData($form.get(0));
 
         $.ajax({
@@ -32,14 +34,16 @@ $(".form-button").click(function(){
 		})
 		.done(function(result){
             if (result.status === "OK") {
-                window.location.replace("/dashboard");
+				if($form.attr("action").toLowerCase() == "/login"){
+					window.location.replace("/dashboard");
+				}
             } else {
-                $(".message").addClass("alert alert-danger").html(result.message);
+                $message.addClass("alert alert-danger").html(result.message);
             }
         });
     }
 	else{
-		$(".message").addClass("alert alert-danger").html('Veuillez remplir tous les champs obligatoires');
+		$message.addClass("alert alert-danger").html('Veuillez remplir tous les champs obligatoires');
 	}
 
     return false;

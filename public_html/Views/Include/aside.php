@@ -1,9 +1,7 @@
 <aside class="col-md-<?php if(!$page || $page=="home"){echo 4;}else{echo 3;}?> blog-sidebar">
     <div class="p-3 mb-3 bg-light rounded">
     <h4 class="font-italic">A propos</h4>
-    <p class="mb-0">
-        News Hetic est un blog de publication des actualités des étudiants. Ce blog donne plus de visibilité aux projets étudiants
-    </p>
+    <p class="mb-0"><?=$siteInfo["about"]?></p>
     </div>
 
     <div class="p-3">

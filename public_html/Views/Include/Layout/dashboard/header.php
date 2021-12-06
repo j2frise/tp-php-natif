@@ -1,10 +1,13 @@
 <?php
-    if(!isset($_SESSION['userhetic'])){
-        header("location:/admin");
-    }
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $segment = explode('/', $uri);
-    $page = $segment[1];
+  use App\SiteInfo;
+  $siteInfo = SiteInfo::data()[0];
+
+  if(!isset($_SESSION['userhetic'])){
+      header("location:/admin");
+  }
+  $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  $segment = explode('/', $uri);
+  $page = $segment[1];
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,7 +35,7 @@
 
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" target="_blank"><i class="fa fa-globe"></i> News HETIC</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" target="_blank"><i class="fa fa-globe"></i> <?=$siteInfo["title"]?></a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Déconnexion </a>

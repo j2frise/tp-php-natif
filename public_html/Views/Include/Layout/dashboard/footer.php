@@ -21,6 +21,7 @@
       $(document).ready(function() {
             $('#example').DataTable();
             $("#txtEditor").Editor();
+            $( "#tabs" ).tabs();
         } );
     </script>
   </body>

@@ -21,6 +21,7 @@ Router::get('/posts/(:any)', 'ArticleController@edit');
 Router::get('/categories', 'CategorieController@index');
 Router::get('/slider', 'SlideController@index');
 Router::get('/profile', 'ProfileController@index');
+Router::put('/profile', 'ProfileController@edit');
 Router::get('/contact', 'ContactController@index');
 
 

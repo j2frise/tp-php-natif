@@ -10,41 +10,7 @@ use App\Database;
  */
 class Auth
 {
-    public static function register($request)
-    {
-        Database::query("INSERT INTO users (
-            `email`,
-            `password`,
-            `isAdmin`,
-            `compte`,
-            `avatar`,
-            `createdAt`
-        ) VALUES (:email, :password, :isAdmin, :compte, :avatar, NOW()");
-        Database::bind([
-            ':email' => $request->email,
-            ':password' => password_hash($request->password, PASSWORD_DEFAULT),
-            ':isAdmin' => intval($request->isAdmin),
-            ':compte' => intval($request->compte),
-            ':avatar' => $request->avatar,
-        ]);
 
-        if (Database::execute()) return true;
-        return false;
-    }
-
-
-    public static function existed($user)
-    {
-        $username=$user;
-        $email=$user;
-        Database::query("SELECT * FROM users WHERE email = :email OR userName = :username");
-        Database::bind([':email'=> $email,':username'=> $username,]);
-
-        if (!is_null(Database::fetch()) && !is_null(Database::fetch()['id'])) return true;
-        return false;
-    }
-
-    
     public static function login($request)
     {
         $username=$request->username;

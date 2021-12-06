@@ -1,7 +1,10 @@
 <?php
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $segment = explode('/', $uri);
-    $page = $segment[1];
+  use App\SiteInfo;
+  $siteInfo = SiteInfo::data()[0];
+
+  $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  $segment = explode('/', $uri);
+  $page = $segment[1];
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,12 +39,12 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
             <a class="text-muted" href="/">
-                <img class="" src="/public/img/logo/logo.jpg" alt="" width="70" height="70">
+                <img class="" src="<?=$siteInfo["logo"]?>" alt="" width="70" height="70">
 
             </a>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="/">News HETIC</a>
+            <a class="blog-header-logo text-dark" href="/"><?=$siteInfo["title"]?></a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <?php if(isset($_SESSION['userhetic'])){ ?>
